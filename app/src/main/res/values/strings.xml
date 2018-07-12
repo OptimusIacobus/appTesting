@@ -3,4 +3,42 @@
     <string name="title_activity_secondary">SecondaryActivity</string>
     <string name="action_settings">Settings</string>
     <string name="section_format">Hello World from section: %1$d</string>
+    <string name="title_activity_misc">Misc</string>
+    <string name="title_activity_webview">Webview</string>
+
+    <string-array name="items">
+        <item>peach</item>
+        <item>tomate</item>
+        <item>squash</item>
+    </string-array>
+
+    <string-array name="prices">
+        <item>$0.99</item>
+        <item>$1.49</item>
+        <item>$0.89</item>
+    </string-array>
+
+    <string-array name="descriptions">
+        <item>Fresh peaches from Georgia</item>
+        <item>Fresh salad tomatoes from Ohio</item>
+        <item>Fresh yellow squash from California</item>
+    </string-array>
+
+    <string-array name="titles">
+        <item>Misc</item>
+        <item>Calculator</item>
+        <item>Github</item>
+    </string-array>
+
+    <array name="icons">
+        <item>@drawable/github</item>
+    </array>
+    <string name="title_activity_navigation_drawer">NavigationDrawer</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+
+
 </resources>
