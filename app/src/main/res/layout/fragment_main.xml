@@ -5,10 +5,100 @@
     android:layout_height="match_parent"
     tools:context=".MainFragment">
 
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="185dp"
         android:layout_height="wrap_content"
-        android:text="main" />
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        android:minHeight="20dp"
+        android:minWidth="20dp"
+        android:orientation="vertical">
+
+        <ToggleButton
+            android:id="@+id/music"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="ToggleButton" />
+
+        <Button
+            android:id="@+id/ButtonStart"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:nextFocusUp="@+id/ButtonEnd"
+            android:text="Play Music" />
+
+        <Button
+            android:id="@+id/ButtonEnd"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:nextFocusDown="@+id/ButtonStart"
+            android:text="End Music" />
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/viewthing"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="269dp"
+            android:layout_height="118dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="169dp"
+            android:gravity="center"
+            android:text="Welcome to this app!"
+            android:textSize="40dp" />
+
+        <Button
+
+            android:id="@+id/entranceBtn"
+            android:layout_width="269dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="85dp"
+            android:gravity="center"
+            android:text="Calculator"
+            android:textSize="20dp" />
+
+        <Button
+            android:id="@+id/misc"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="155dp"
+            android:gravity="center"
+            android:text="Miscellaneous"
+            android:textSize="20dp" />
+
+        <ImageButton
+            android:id="@+id/toGoogle"
+            android:layout_width="80dp"
+            android:layout_height="53dp"
+            android:layout_alignEnd="@+id/textView"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="79dp" />
+
+        <EditText
+            android:id="@+id/letterInput"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="30dp"
+            android:ems="10"
+            android:hint="Enter one letter"
+            android:imeOptions="actionSend"
+            android:inputType="textPersonName" />
+
+    </RelativeLayout>
+
+
 </FrameLayout>

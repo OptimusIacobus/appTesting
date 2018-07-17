@@ -32,6 +32,11 @@ public class NavigationDrawer extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        // trying to launch the homeactivity first
+        android.support.v4.app.FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.frmain, new MainFragment());
+        ft.commit();
     }
 
     @Override
@@ -58,10 +63,19 @@ public class NavigationDrawer extends AppCompatActivity
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        switch(id){
+            //noinspection SimplifiableIfStatement
+            case R.id.action_settings:
+                Intent goTo = new Intent(this, SettingsActivity.class);
+                startActivity(goTo);
+                return true;
+            case R.id.exit:
+                finish();
+                System.exit(0);
+
         }
+
+
 
         return super.onOptionsItemSelected(item);
     }
@@ -74,9 +88,6 @@ public class NavigationDrawer extends AppCompatActivity
 
         if (id == R.id.mainpage) {
             // Handle the camera action
-//            Intent goTo = new Intent(NavigationDrawer.this, MainActivity.class);
-//            startActivity(goTo);
-            //Fragment section
             android.support.v4.app.FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
             ft.replace(R.id.frmain, new MainFragment());
             ft.commit();
@@ -85,7 +96,7 @@ public class NavigationDrawer extends AppCompatActivity
             String github = "https://github.com/OptimusIacobus";
             Uri webaddress = Uri.parse(github);
             Intent gotoLink = new Intent(Intent.ACTION_VIEW, webaddress);
-            if(gotoLink.resolveActivity(getPackageManager()) !=  null){
+            if (gotoLink.resolveActivity(getPackageManager()) != null) {
                 startActivity(gotoLink);
             }
 
@@ -93,7 +104,7 @@ public class NavigationDrawer extends AppCompatActivity
         } else if (id == R.id.nav_misc) {
 
         } else if (id == R.id.nav_settings) {
-            Intent i = new Intent(NavigationDrawer.this,SettingsActivity.class);
+            Intent i = new Intent(NavigationDrawer.this, SettingsActivity.class);
             startActivity(i);
 
         }
