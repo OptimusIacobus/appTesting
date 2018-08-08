@@ -2,10 +2,7 @@ package com.example.supaj.beginnercontent;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
@@ -33,8 +30,16 @@ public class Misc extends AppCompatActivity {
         listView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent goTo = new Intent(Misc.this, List.class);
+                Intent goTo = new Intent(Misc.this, ListActivity.class);
                 startActivity(goTo);
+            }
+        });
+
+        Button addElement = (Button) findViewById(R.id.addListElement);
+        addElement.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                Intent goTo = new Intent(Misc.this, AddElement.class);
             }
         });
 
@@ -52,18 +57,7 @@ public class Misc extends AppCompatActivity {
             }
         });
 
-        //TODO: Use this button lol
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
     }
 
 }

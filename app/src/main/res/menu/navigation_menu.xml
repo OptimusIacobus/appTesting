@@ -9,13 +9,13 @@
             android:icon="@drawable/ic_home_black"
             android:title="MainPage" />
         <item
+            android:id="@+id/miscpage"
+            android:icon="@drawable/ic_misc"
+            android:title="Misc" />
+        <item
             android:id="@+id/github"
             android:icon="@drawable/github"
             android:title="Github" />
-        <item
-            android:id="@+id/nav_misc"
-            android:icon="@drawable/ic_misc"
-            android:title="Misc" />
         <item
             android:id="@+id/nav_settings"
             android:icon="@drawable/ic_settings_black"

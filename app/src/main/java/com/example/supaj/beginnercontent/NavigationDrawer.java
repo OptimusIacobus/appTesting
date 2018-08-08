@@ -92,6 +92,12 @@ public class NavigationDrawer extends AppCompatActivity
             ft.replace(R.id.frmain, new MainFragment());
             ft.commit();
 
+        }
+        else if (id == R.id.miscpage) {
+            android.support.v4.app.FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+            ft.replace(R.id.frmain, new MiscFragment());
+            ft.commit();
+
         } else if (id == R.id.github) {
             String github = "https://github.com/OptimusIacobus";
             Uri webaddress = Uri.parse(github);
@@ -101,9 +107,7 @@ public class NavigationDrawer extends AppCompatActivity
             }
 
 
-        } else if (id == R.id.nav_misc) {
-
-        } else if (id == R.id.nav_settings) {
+        }  else if (id == R.id.nav_settings) {
             Intent i = new Intent(NavigationDrawer.this, SettingsActivity.class);
             startActivity(i);
 
