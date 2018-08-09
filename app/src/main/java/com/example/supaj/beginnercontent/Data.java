@@ -1,10 +1,13 @@
 package com.example.supaj.beginnercontent;
 
-public class Data {
+import java.io.Serializable;
+
+public class Data implements Serializable{
     public String title;
     public String description;
     public int imageId;
     public String detail;
+
 
     Data(String title, String detail, int imageId, String description) {
         this.title = title;

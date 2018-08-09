@@ -22,51 +22,42 @@
             <ImageView
                 android:id="@+id/imageView"
                 android:layout_width="match_parent"
-                android:layout_height="258dp"
-                android:layout_alignParentBottom="true"
-                android:layout_alignParentStart="true"
-                android:layout_marginStart="15dp"
-                app:srcCompat="@drawable/jacob" />
+                android:layout_height="258dp" />
 
             <Button
                 android:id="@+id/webview"
-                android:layout_width="match_parent"
+                android:layout_width="132dp"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="125dp"
-                android:layout_marginEnd="108dp"
-                android:layout_marginLeft="55dp"
-                android:layout_marginRight="108dp"
-                android:layout_marginStart="55dp"
-                android:layout_marginTop="57dp"
+                android:layout_marginBottom="116dp"
                 android:text="WebView" />
 
             <Button
                 android:id="@+id/listview"
-                android:layout_width="match_parent"
+                android:layout_width="178dp"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="233dp"
-                android:layout_marginEnd="205dp"
-                android:layout_marginLeft="91dp"
-                android:layout_marginRight="205dp"
-                android:layout_marginStart="91dp"
-                android:layout_marginTop="230dp"
                 android:text="List" />
-
-            <Switch
-                android:id="@+id/switch1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_below="@+id/webview"
-                android:layout_marginEnd="62dp"
-                android:layout_marginTop="-125dp"
-                android:text="Switch" />
 
             <Button
                 android:id="@+id/addListElement"
                 android:layout_width="179dp"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="170dp"
                 android:text="Add To List" />
+
+            <Button
+                android:id="@+id/camera"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="152dp"
+                android:text="To The Camera" />
+
+            <Switch
+                android:id="@+id/switch1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="183dp"
+                android:text="Switch" />
+
         </LinearLayout>
     </ScrollView>
 
