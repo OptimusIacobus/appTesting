@@ -1,6 +1,8 @@
 package com.example.supaj.beginnercontent;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.res.AssetManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.media.Image;
@@ -12,6 +14,7 @@ import android.support.v4.content.FileProvider;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.util.Pair;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -26,6 +29,7 @@ import com.google.firebase.ml.vision.text.FirebaseVisionTextDetector;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -38,11 +42,17 @@ public class Camera extends AppCompatActivity {
 
     private ImageView mImageView;
     private Bitmap mSelectedImage;
+    // Max width (portrait mode)
+    private Integer mImageMaxWidth;
+    // Max height (portrait mode)
+    private Integer mImageMaxHeight;
 
     //was picture taken
     boolean takenPicture = false;
     //string for file name
     String fileName = "";
+
+
 
     Button analyzeImage;
 
@@ -67,11 +77,13 @@ public class Camera extends AppCompatActivity {
             public void onClick(View view) {
                 File imgFile = new File(fileName);
 
+                Toast.makeText(Camera.this, printTextHolder(), Toast.LENGTH_SHORT).show();
                 if (imgFile.exists()) {
 
-                    Bitmap myBitmap = BitmapFactory.decodeFile(imgFile.getAbsolutePath());
 
-                    mImageView.setImageBitmap(myBitmap);
+                   // Bitmap myBitmap = BitmapFactory.decodeFile(imgFile.getAbsolutePath());
+
+                    //mImageView.setImageBitmap(myBitmap);
                 }
                 // }
             }
@@ -86,8 +98,16 @@ public class Camera extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 runTextRecognition();
+
             }
         });
+    }
+
+    public String printTextHolder(){
+        String holder = "";
+        for(int i = 0; i < textHolder.size(); i++)
+            holder += textHolder.get(i);
+        return holder;
     }
 
 
@@ -142,8 +162,40 @@ public class Camera extends AppCompatActivity {
 
     //CUSTOM code for interpreting the image
     private void runTextRecognition() {
+        //Code convert image from asset
+
+        BitmapFactory.Options options = new BitmapFactory.Options();
+        options.inPreferredConfig = Bitmap.Config.ARGB_8888;
+        Bitmap bitmap = BitmapFactory.decodeFile(fileName, options);
+
+        if (bitmap != null) {
+            // Get the dimensions of the View
+            //Pair<Integer, Integer> targetedSize = getTargetedWidthHeight();
+
+            //int targetWidth = targetedSize.first;
+           // int maxHeight = targetedSize.second;
+
+            // Determine how much to scale down the image
+            /*float scaleFactor =
+                    Math.max(
+                            (float) mSelectedImage.getWidth() / (float) targetWidth,
+                            (float) mSelectedImage.getHeight() / (float) maxHeight);
+                            */
+
+           /* Bitmap resizedBitmap =
+                    Bitmap.createScaledBitmap(
+                            mSelectedImage,
+                            (int) (mSelectedImage.getWidth()),
+                            (int) (mSelectedImage.getHeight()),
+                            true);
+                            */
+
+            mImageView.setImageBitmap(bitmap); //previously resizedbitmap
+            //mSelectedImage = resizedBitmap;
+        }
+
         // TODO: Add your code here to run on-device text recognition.
-        FirebaseVisionImage image = FirebaseVisionImage.fromBitmap(mSelectedImage);
+        FirebaseVisionImage image = FirebaseVisionImage.fromBitmap(bitmap);
         FirebaseVisionTextDetector detector = FirebaseVision.getInstance()
                 .getVisionTextDetector();
         analyzeImage.setEnabled(false);
@@ -187,5 +239,54 @@ public class Camera extends AppCompatActivity {
                 }
             }
         }
+    }
+
+
+    // Functions for loading images from app assets. (NOT NEEDED LOL)
+
+    // Returns max image width, always for portrait mode. Caller needs to swap width / height for
+    // landscape mode.
+    private Integer getImageMaxWidth() {
+        if (mImageMaxWidth == null) {
+            // Calculate the max width in portrait mode. This is done lazily since we need to
+            // wait for
+            // a UI layout pass to get the right values. So delay it to first time image
+            // rendering time.
+            mImageMaxWidth = mImageView.getWidth();
+        }
+
+        return mImageMaxWidth;
+    }
+
+    // Returns max image height, always for portrait mode. Caller needs to swap width / height for
+    // landscape mode.
+    private Integer getImageMaxHeight() {
+        if (mImageMaxHeight == null) {
+            // Calculate the max width in portrait mode. This is done lazily since we need to
+            // wait for
+            // a UI layout pass to get the right values. So delay it to first time image
+            // rendering time.
+            mImageMaxHeight =
+                    mImageView.getHeight();
+        }
+
+        return mImageMaxHeight;
+    }
+
+
+    //convert bitmap from asset
+    public static Bitmap getBitmapFromAsset(Context context, String filePath) {
+        AssetManager assetManager = context.getAssets();
+
+        InputStream is;
+        Bitmap bitmap = null;
+        try {
+            is = assetManager.open(filePath);
+            bitmap = BitmapFactory.decodeStream(is);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return bitmap;
     }
 }
